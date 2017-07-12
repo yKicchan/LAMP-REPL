@@ -77,18 +77,15 @@ Dockerの各コンテナの設定です。
 mysqlの初期設定:L15~
 ```
 environment:
-  - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-  - MYSQL_ROOT_PASSWORD=パスワード
-  - MYSQL_DATABASE=DB名
-  - MYSQL_USER=ユーザ名
-  - MYSQL_PASSWORD=パスワード
+  - MYSQL_ROOT_PASSWORD=rootpass
+  - MYSQL_DATABASE=database
+  - MYSQL_USER=user
+  - MYSQL_PASSWORD=password
 ```
-
-MYSQL_ALLOW_EMPTY_PASSWORD
-- rootユーザのパスワードがいらない時に設定します(非推奨)
 
 MYSQL_ROOT_PASSWORD
 - rootユーザのパスワードが設定できます
+- パスワードを設定したくない時は`MYSQL_ALLOW_EMPTY_PASSWORD=yes`とできますが自己責任で。
 
 MYSQL_DATABASE
 - 任意でDBを一つ作成できます
