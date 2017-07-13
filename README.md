@@ -1,7 +1,7 @@
 # LAMP開発環境構築
 
 - VirtualBox+Vagrant+Dockerを使ったLAMP開発環境です。
-- apache2.0 + php5.6 + mysql5.6
+- apache2.4 + php5.6 + mysql5.6
 
 
 ## 手順
