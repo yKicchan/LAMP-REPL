@@ -1,9 +1,7 @@
 # LAMP開発環境構築
 
 - VirtualBox+Vagrant+Dockerを使ったLAMP開発環境です。
-- apache2.0, php5.6, mysql5.6
-- apacheやmysqlの設定などは詳しく解説されているサイトなどを参考にしてください
-- ↓の読み辛さは頑張って改良していきますすみません。
+- apache2.0 + php5.6 + mysql5.6
 
 
 ## 手順
@@ -41,7 +39,7 @@ Mac /etc/hosts
 
 Win C:¥windows¥system32¥drivers¥etc¥hosts
 ```
-192.168.33.11 example.dev
+192.168.33.11 docker.dev
 ```
 
 ブラウザで http://docker.dev にアクセス!!
