@@ -1,10 +1,9 @@
 # LAMP開発環境構築
 
 - VirtualBox+Vagrant+Dockerを使ったLAMP開発環境です。
-- コマンド一発で環境構築できる！！（はず...）
-- ↓の読み辛さは頑張って改良していきますすみません。
-- レプリケーションは未対応です。そのうちやります
+- apache2.0, php5.6, mysql5.6
 - apacheやmysqlの設定などは詳しく解説されているサイトなどを参考にしてください
+- ↓の読み辛さは頑張って改良していきますすみません。
 
 
 ## 手順
@@ -58,11 +57,9 @@ Windowsの人はnfsが使えないらしいのでL13をコメントアウトし�
 node.vm.synced_folder "./docker", "/docker", type: "rsync", rsync__exclude: [".vagrant/", ".git/"]
 ```
 
-### docker/sql
+### docker/master/init.d
 
 ここにダンプファイルを置くことで、DBにデータを流しこめます。
-
-DBを初期化できます！
 
 ### docker/src
 
@@ -96,7 +93,7 @@ MYSQL_USER
 MYSQL_PASSWORD
 - 作成したユーザのパスワードを設定できます
 
-### docker/apache/virtual.conf
+### docker/app/apache/virtual.conf
 
 apacheの設定ファイルです。
 
@@ -112,17 +109,31 @@ RUNコマンドで必要なパッケージなどインストールできます�
 
 apacheのリライト機能を使う方はL7のコメントを外してください
 
-リライト機能とはなんぞやという方はスルーで大丈夫です。
+リライト機能とはなんぞやという方はスルーで。
 ```
 RUN a2enmod rewrite
 ```
 
-### docker/mysql/my.cnf
+### docker/master/my.cnf
 
-mysqlの設定ファイルです。
+マスター側のmysqlの設定ファイルです。
 
 必要に応じて適当に変更してください。
 
+以下はスレーブの設定
+```
+server-id=1001
+log-bin=mysql-bin
+relay_log_info_repository=TABLE
+relay_log_recovery=ON
+sync_binlog=1
+```
+
+### docker/replica/my.cnf
+
+スレーブ側のmysql設定ファイルです。
+
+`server-id=1002`と`read_only`以外はマスターと同じがいいらしいです。
 
 ## コマンド
 
@@ -131,6 +142,11 @@ mysqlの設定ファイルです。
 立ち上げ
 ```
 $ vagrant up
+```
+
+ゲストOSにログイン
+```
+$ vagrant ssh
 ```
 
 停止
