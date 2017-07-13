@@ -2,13 +2,13 @@
 $master  = new mysqli('master', 'user', 'password', 'database');
 $replica = new mysqli('replica', 'user', 'password', 'database');
 
-$sql = "INSERT INTO user (name) VALUES ('".gethostname()."')";
+$sql = "INSERT INTO user (`time`) VALUES ('".date('Y-m-d H:i:s')."')";
 $master->query($sql);
 
-$sql = "SELECT id, host FROM test";
+$sql = "SELECT `id`, `time` FROM `test`";
 if ($result = $replica->query($sql)) {
     while ($row = $result->fetch_assoc()) {
-        echo "{$row['id']}: {$row['host']}<br>";
+        echo "{$row['id']}: {$row['time']}<br>";
     }
     $result->close();
 }
