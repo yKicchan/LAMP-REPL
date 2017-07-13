@@ -35,12 +35,14 @@ $ cd LAMP
 $ vagrant up
 ```
 
-ホストOSのhostsファイルに下記項目を追加
+ホストOSのhostsファイルに下記項目を追加(管理者権限が必要です)
+Mac /etc/hosts
+Win C:¥windows¥system32¥drivers¥etc¥hosts
 ```
 192.168.33.11 example.dev
 ```
 
-ブラウザで http://example.dev にアクセス!!
+ブラウザで http://docker.dev にアクセス!!
 
 
 ## 各ディレクトリとファイルの説明(一部抜粋)
