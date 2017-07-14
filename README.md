@@ -2,6 +2,7 @@
 
 - VirtualBox+Vagrant+Dockerを使ったLAMP開発環境です。
 - apache2.4 + php5.6 + mysql5.6
+- [yKicchan/LAMP](https://github.com/yKicchan/LAMP)のレプリケーション対応版
 
 
 ## 手順
