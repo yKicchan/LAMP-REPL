@@ -1,12 +1,8 @@
 #!/bin/bash
 rm -f /var/lib/mysql/auto.cnf
-while :
+while [ ! -e /docker/master_db.sql ]
 do
-    if [ -e /docker/master_db.sql ]; then
-        break
-    else
-        sleep 5s;
-    fi
+    sleep 5s;
 done
 mysql -u root -prootpass database < /docker/master_db.sql
 MASTER_LOG_FILE=`head -n 100 /docker/master_db.sql | grep -o "MASTER_LOG_FILE='mysql-bin.[0-9]\+'"`

@@ -9,7 +9,7 @@ $master->query($sql);
 $sql = "SELECT * FROM `test`";
 if ($result = $replica->query($sql)) {
     while ($row = $result->fetch_assoc()) {
-        echo "{$row['id']}: {$row['time']}<br>";
+        echo "{$row['id']}回目の接続: {$row['time']}<br>";
     }
     $result->close();
 }
