@@ -7,7 +7,7 @@ Vagrant.configure(2) do |config|
   config.vm.box_url = ["https://storage.googleapis.com/alpha.release.core-os.net/amd64-usr/current/coreos_production_vagrant.json"]
 
   config.vm.define "LAMP-REPL" do |node|
-    node.vm.hostname = "lamp_repl.dev"
+    node.vm.hostname = "lamp-repl.dev"
     node.vm.network "private_network", ip: "192.168.33.12"
     # Mac OSX
     node.vm.synced_folder "./docker", "/docker", type: "nfs"
